@@ -1,0 +1,78 @@
+---
+title: 'Styling & Themes'
+---
+
+### Theme System
+
+**Purpose**: Support light, dark, and high-contrast visual themes for different environments and preferences.
+
+**User Value**: Accountants often work long hours staring at dense tables — dark mode reduces eye strain. High-contrast mode serves users with visual impairments.
+
+**Considerations**:
+
+- Three themes: Light (default), Dark, High Contrast
+- Theme toggle in global toolbar (sun/moon icon)
+- Respect system preference (prefers-color-scheme) on first load
+- Transition animation between themes (150ms cross-fade to prevent jarring flash)
+- High-contrast theme meets WCAG AAA (7:1 contrast ratio for text, 3:1 for UI components)
+
+### Row Density
+
+Purpose: Adjust row height and padding to show more or fewer rows in the viewport.
+
+**User Value**: Compact mode maximizes visible data (critical for large monitors); comfortable mode improves readability on smaller screens.
+
+**Considerations**:
+
+- Three density levels: Compact (24px rows), Default (32px), Comfortable (48px)
+- Toggle in toolbar (density icon: ☰ with line spacing visual)
+- Font size adjusts proportionally (12px / 13px / 14px)
+- Density change triggers virtualizer re-measurement
+- Cell padding scales: 2px 6px / 4px 8px / 8px
+
+### Per-Column Formatting
+
+**Purpose**: Customize how data is displayed in each column (number format, alignment, etc.).
+
+**User Value**: Accountants need precise control over decimal places, thousands separators, negative number format (parentheses vs. minus sign), and date formats.
+
+**Considerations**:
+
+- Right-click column header → "Format column..."
+- Options by data type:
+  - **Numbers**: decimal places (0-6), thousands separator, negative format (-100 vs. (100)), percentage mode
+  - **Currency**: symbol position, currency code display (\$1,234 vs. 1,234 USD vs. USD 1,234)
+  - **Dates**: format pattern (MM/DD/YYYY, DD-MMM-YYYY, YYYY-MM-DD, etc.)
+- Alignment: left / center / right (numbers default right-aligned)
+- Conditional formatting (see 6.4)
+- Format preview shown in dialog before applying
+
+### Conditional Formatting
+
+**Purpose**: Apply visual styling rules based on cell values (colors, icons, data bars).
+
+**User Value**: Instantly identify negative balances (red), large variances (bold), or overdue items (highlighted) without reading every number.
+
+**Considerations**:
+
+- Rules engine in Column Settings:
+  - Color scale (gradient from green to red based on value range)
+  - Threshold rules: "If value \< 0, text color = red"
+  - Icon sets: ▲▼ arrows for positive/negative, ● dots for status categories
+  - Data bars: horizontal bar within cell proportional to value (like Excel)
+- Up to 5 rules per column
+- Rules evaluated top-to-bottom, first match wins (or "apply all" mode)
+- Preview before applying
+
+### Zebra Striping & Grid Lines
+
+**Purpose**: Visual options for row differentiation and cell boundary clarity.
+
+**User Value**: Dense numeric tables need visual guides to track across columns — zebra striping and grid lines prevent misreading rows.
+
+**Considerations**:
+
+- Toggle: Zebra stripes on/off (alternating row backgrounds)
+- Toggle: Vertical grid lines on/off (horizontal always on for readability)
+- Column highlight on hover (entire column gets subtle background — helps track column values)
+- "Crosshair" mode: highlight both the row and column of the hovered cell

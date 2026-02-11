@@ -1,0 +1,63 @@
+---
+title: 'Column Sizing & Scrolling'
+---
+
+### Column Resizing
+
+**Purpose**: Manually adjust column widths by dragging header borders.
+
+**User Value**: Auto-sized columns can't anticipate every user's needs — some want a wider "Description" column, others want it narrow because they never read it.
+
+**Considerations**:
+
+- Resize handle on right edge of each column header (visible on hover, 6px grab zone)
+- Double-click resize handle = auto-fit to content (scans visible rows)
+- Minimum width: 40px (prevents accidental collapse to 0)
+- Maximum width: 800px (prevents runaway expansion)
+- Resize cursor (col-resize) as affordance
+- Show width tooltip during drag ("240px")
+- "Reset all widths" option in Column Settings
+
+### Auto-Fit Modes
+
+**Purpose**: Automatically size columns to content or distribute available width.
+
+**User Value**: Quick way to optimize table layout without manual resizing each column.
+
+**Considerations**:
+
+- Three modes available from Column Settings:
+  - Fit to Content: Each column sized to longest visible value (+ header text)
+  - Fit to Page: Columns stretch proportionally to fill viewport width (no horizontal scroll)
+  - Fixed: All columns use a uniform width (user-specified)
+- Per-column override: any column can be manually resized after auto-fit
+- "Fit to Content" should sample visible rows + first/last 100 rows (not full dataset — too slow for 1M rows)
+
+### Virtualized Rendering
+
+**Purpose**: Render only visible rows and columns to maintain 60fps performance with massive datasets.
+
+**User Value**: Transparent to users — they simply experience a fast, responsive table regardless of data size.
+
+**Considerations**:
+
+- Scrollbar should accurately represent total dataset size (not just rendered rows)
+- No visible pop-in or flickering during fast scrolling
+- "Overscan" buffer (render 20 extra rows above/below viewport) to prevent blank flashes
+- Consider showing a loading shimmer for extremely fast scroll (scroll velocity \> threshold)
+- Row height: fixed preferred for performance; if variable, pre-measure or estimate
+
+### Horizontal Scroll via Keyboard & Shift+Scroll
+
+**Purpose**: Allow horizontal navigation without a horizontal scrollbar click.
+
+**User Value**: Accountants on laptops without mice need efficient horizontal traversal. Horizontal scrollbar is often tiny and hard to target.
+
+**Considerations**:
+
+- Shift+MouseWheel = horizontal scroll (standard UX convention)
+- Arrow keys when focused on a cell navigate cell-by-cell (including horizontally)
+- Tab/Shift+Tab moves through focusable cells in reading order
+- When a cell is focused via keyboard, auto-scroll to bring it into view (both axes)
+
+Optional: bottom horizontal scrollbar made thicker (12px) for easier targeting

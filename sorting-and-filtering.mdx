@@ -1,0 +1,66 @@
+---
+title: 'Sorting & Filtering'
+---
+
+### Multi-Column Sorting
+
+**Purpose**: Sort data by multiple columns in priority order.
+
+**User Value**: "Sort by Account Type ascending, then by Date descending, then by Amount descending" — essential for financial data analysis.
+
+**Considerations**:
+
+- Click column header = single-column sort (toggles asc → desc → none)
+- Shift+Click = add column to multi-sort stack
+- Sort priority numbers displayed in header (①, ②, ③)
+- Sort indicator arrows (▲▼) in headers
+- "Clear all sorts" button in toolbar when any sort is active
+- Sort configuration also available in dedicated sort panel (for keyboard users and complex sorts)
+- Stable sort guarantee: rows with equal values maintain their original relative order
+
+### Column-Specific Filtering
+
+**Purpose**: Filter rows based on column values with type-appropriate filter controls.
+
+**User Value**: "Show me only Expense accounts with amounts \> \$10,000 in Q3 2024" — complex filtering is daily work for analysts.
+
+**Considerations**:
+
+- Filter icon in each column header; clicking opens a filter popover anchored to that column
+- Filter type adapts to column data type:
+  - **Text**: contains / equals / starts with / regex + quick-select checklist of unique values
+  - **Numeric/Currency**: equals / greater than / less than / between / top N / bottom N
+  - **Date**: exact date / date range picker / relative (last 30 days, this quarter, YTD)
+  - **Enum/Category**: multi-select checklist with search
+- Active filters shown as dismissible chips in toolbar: [Account Type: Expense ×] [Amount: \> \$10K ×]
+- Compound filters: AND within same column, AND/OR between columns (advanced mode)
+- Filter count badge on column header when active
+
+### Saved Filter Presets
+
+**Purpose**: Save and recall named filter configurations.
+
+**User Value**: Accountants run the same analyses repeatedly (month-end review, audit prep, reconciliation). Rebuilding complex filters each time is wasteful.
+
+**Considerations**:
+
+- "Save current filters as..." option → name input dialog
+- Dropdown of saved presets in filter area
+- Edit/rename/delete saved presets
+- Share presets with team members (if collaboration features exist)
+- System presets for common accounting scenarios (e.g., "Unreconciled Items," "High-Value Transactions")
+
+### Quick Column Filters (Inline Header Filters)
+
+**Purpose**: Persistent filter row directly below the header for rapid, always-visible filtering.
+
+**User Value**: Power users (most accountants) prefer an always-visible filter row rather than opening popovers — similar to Excel's filter row.
+
+**Considerations**:
+
+- Optional secondary header row with compact filter inputs per column
+- Toggled on/off via toolbar button ("Show filter row")
+- Text columns: simple text input with implicit "contains"
+- Numeric: comparison operator dropdown + number input
+- Date: compact date range picker
+- Must not interfere with column resize or sort click targets

@@ -1,0 +1,59 @@
+---
+title: 'Column Customization'
+---
+
+### Column Visibility Management
+
+**Purpose**: Show/hide columns to reduce visual noise and focus on relevant data.
+
+**User Value**: Financial tables often have 40+ columns (debit, credit, running balance, multiple tax fields, department codes, etc.). Users need different column subsets for different tasks (reconciliation vs. reporting vs. audit).
+
+**Considerations**:
+
+- Checklist in a Column Settings side panel with drag-to-reorder
+- "Select All / None" and quick filter to find column names
+- Show column data type icon (Σ numeric, Aa text) for quick identification
+- Minimum 1 column must remain visible (prevent empty table state)
+- Column count indicator in toolbar: "Showing 12 of 38 columns"
+- Right-click column header → "Hide this column" for quick individual hiding
+
+### Column Reordering
+
+**Purpose**: Arrange columns in the order that matches the user's workflow.
+
+**User Value**: Default column order rarely matches individual workflow. An AP clerk wants vendor name first; an auditor wants GL code first.
+
+**Considerations**:
+
+- Drag-and-drop in column headers (with clear drag handle affordance)
+- Also reorderable in Column Settings side panel list (for non-mouse users)
+- Keyboard reorder: Ctrl+Shift+Arrow in column header focus
+- Visual drop indicator (blue line between columns during drag)
+- Pinned columns maintain their pin zone during reorder (can't drag a pinned-left column to the scrollable zone without unpinning)
+
+### Column Pinning (Freeze Columns)
+
+**Purpose**: Keep critical columns visible while horizontally scrolling through the remaining data.
+
+**User Value**: Account number and name should always be visible while scrolling to view period columns or memo fields.
+
+**Considerations**:
+
+- Support left-pin and right-pin (right-pin useful for totals/status columns)
+- Visual separator line (shadow/border) between pinned and scrollable zones
+- Maximum pin limit (e.g., 6 columns per side) to prevent over-pinning
+- Right-click header → "Pin to left / Pin to right / Unpin"
+- Pin icon indicator in header
+
+### Column Grouping (Header Groups)
+
+**Purpose**: Visually organize related columns under a parent header.
+
+**User Value**: Financial tables often have Q1/Q2/Q3/Q4 columns, or Debit/Credit sub-columns under each department — hierarchical headers make this scannable.
+
+**Considerations**:
+
+- Multi-level header rows (up to 3 levels deep)
+- Collapsible column groups (click group header to toggle showing/hiding child columns)
+- Visual nesting with alternating header background shades
+- Group collapse state persisted in view preferences

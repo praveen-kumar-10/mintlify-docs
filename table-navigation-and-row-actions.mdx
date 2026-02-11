@@ -1,0 +1,44 @@
+---
+title: 'Table Navigation & Row Actions'
+---
+
+### "Go to Row" Jump Control
+
+**Purpose**: Instantly navigate to a specific row by number or primary key (e.g., Transaction ID, Journal Entry #).
+
+**User Value**: Accountants frequently reference specific line items during audits or reconciliation. Scrolling through 500K+ rows is infeasible.
+
+**Considerations**:
+
+- Input field in TableToolbar with typeahead supporting both row index and business key lookup
+- Show row context preview (surrounding 2–3 rows) before jumping so users confirm they're targeting the right record
+- Support range input (e.g., "1500-1520") to jump and auto-select a range
+- Animate scroll to destination (brief 150ms ease) so users perceive spatial movement, but offer "instant jump" in preferences for power users
+- Maintain focus on the target row after jump for keyboard continuity
+
+### Quick Row Search (Find-in-Table)
+
+**Purpose**: Ctrl+F-style search across all visible columns to locate rows matching a text query.
+
+**User Value**: Analysts searching for a vendor name, memo text, or specific dollar amount across the entire table without knowing which column contains the data.
+
+**Considerations**:
+
+- Floating search bar (like browser find) with match count ("3 of 147 matches"), prev/next navigation
+- Highlight matching cells with background color (yellow) and scroll to first match
+- Option to "filter to matches only" (narrows the table) vs. "highlight only" (keeps all rows visible)
+- Search should work across formatted display values (e.g., "\$1,234.56" matches "1234")
+- Escape dismisses, but last search term persists in session
+
+### Minimap / Scroll Position Indicator
+
+**Purpose**: Visual overview of position within the dataset, similar to code editor minimaps.
+
+**User Value**: In 100K+ row tables, the scrollbar thumb becomes tiny and imprecise. A minimap provides spatial context showing where bookmarks, highlighted rows, and search matches exist relative to current viewport.
+
+**Considerations**:
+
+- Narrow vertical strip (12px wide) alongside the scrollbar
+- Color-coded markers: bookmarks (blue dots), search matches (yellow), grouped section boundaries (gray lines), current selection (green)
+- Click on minimap to jump to that position
+- Can be hidden for minimal UI preference

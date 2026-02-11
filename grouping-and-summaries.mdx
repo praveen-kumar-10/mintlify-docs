@@ -1,0 +1,50 @@
+---
+title: 'Grouping & Summaries'
+---
+
+### Row Grouping
+
+**Purpose**: Group rows by one or more column values, creating a hierarchical tree structure.
+
+**User Value**: "Group all transactions by Account Type, then by Department" — fundamental for financial review and reporting.
+
+**Considerations**:
+
+- Drag column header to a "group zone" drop area above the table
+- Or right-click header → "Group by this column"
+- Multi-level grouping (up to 4 levels to prevent performance degradation)
+- Group rows show: group value, row count, and aggregate values
+- Expand/collapse individual groups; "Expand All / Collapse All" buttons
+- Indentation for nested groups (16px per level)
+- Group row visually distinct (bold text, subtle background, expand/collapse chevron)
+- When grouped, original row numbers shown alongside group-relative indices
+
+### Aggregate / Summary Rows
+
+**Purpose**: Display computed aggregates (sum, average, count, min, max) at group level and table footer.
+
+**User Value**: "What's the total debits for the Expense group?" — eliminates the need to export to Excel for basic summarization.
+
+**Considerations**:
+
+- Per-column aggregate function selector (right-click column header → "Summarize: Sum / Avg / Count / Min / Max / None")
+- Aggregates shown in:
+  - Group rows (when grouping is active)
+  - Sticky footer row (always, for full table)
+  - Status bar for selected rows (selection-scoped aggregates)
+- Formatted with same column formatting (currency, decimals, etc.)
+- Weighted average option for financial calculations
+- Aggregate values visually distinguished (bold, slightly different background)
+
+### Subtotal Rows (Inline Subtotals)
+
+**Purpose**: Insert subtotal rows at natural breakpoints (e.g., after each account category) without full grouping.
+
+**User Value**: Mimics traditional accounting report formats (trial balance, income statement) where subtotals appear inline.
+
+**Considerations**:
+
+- "Insert subtotals by [column]" option adds subtotal rows after each distinct value change in a sorted column
+- Subtotal row spans the full width, shows aggregates for numeric columns
+- Visually styled as a separator row (heavier border, bold text, light background)
+- Can be enabled alongside sorting (sort by the subtotal column first, then enable subtotals)

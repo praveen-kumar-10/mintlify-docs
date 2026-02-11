@@ -1,0 +1,59 @@
+---
+title: 'Export & Copy'
+---
+
+### Export Visible Data
+
+**Purpose**: Export the current view (after filtering, sorting, grouping) to CSV, Excel (XLSX), or PDF.
+
+**User Value**: Accountants need to extract data for reports, share with colleagues, or import into other systems.
+
+**Considerations**:
+
+- Export button in toolbar with format dropdown (CSV, XLSX, PDF)
+- Export scope options:
+  - "All rows (current view)" — all filtered/sorted rows
+  - "Selected rows only"
+  - "Current page" (if paginated)
+  - "All data (unfiltered)" — with warning about size
+- Include/exclude options:
+  - Group headers and subtotals (when grouped)
+  - Column formatting (XLSX can preserve number formats)
+  - Hidden columns
+- Progress indicator for large exports (>50K rows)
+- File name auto-generated: {table-name}_{date}_{filter-summary}.csv
+
+
+### Copy-Paste Friendly
+
+**Purpose**: Copy selected cells/rows to clipboard in tab-separated format compatible with Excel paste.
+
+**User Value**: Quick copy of a few rows to paste into an email, spreadsheet, or another tool.
+
+**Considerations**:
+
+- Select cells/rows → Ctrl+C copies as TSV (tab-separated values)
+- Include column headers as first row of copied data
+- Copy formatting: plain text for paste into text editors, rich text for paste into Excel
+- Right-click context menu: "Copy selected rows," "Copy column," "Copy cell value"
+- Visual flash/toast on copy: "42 rows copied to clipboard"
+- Support for Ctrl+A to select all visible rows
+
+
+### Print-Friendly View
+
+**Purpose**: Generate a print-optimized layout of the current table view.
+
+**User Value**: Physical printouts still common in accounting for signing, filing, and meeting review.
+
+**Considerations**:
+
+- "Print" option opens a print preview in a new window/modal
+- Print layout:
+  - Repeating column headers on each page
+  - Page numbers and table title in header/footer
+  - Adjusted column widths to fit page width (or landscape option)
+  - Subtotals and group headers preserved
+  - Conditional formatting colors adjusted for grayscale printing option
+- Page break controls: break after each group, or every N rows
+- Option to include/exclude filter summary at top of printout
